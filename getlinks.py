@@ -26,11 +26,13 @@ class PDPThread(threading.Thread):
         self.binarySemaphore.acquire()
 
         dupes = []
+        seen = set()
         for tag in soup.findAll('a', href=True):
             links = urlparse.urljoin(self.url, tag['href'])
-            dupes.append(links)
-        dedupe = list(set(dupes))
-        for link in dedupe:
+            if links not in seen:
+                dupes.append(links)
+                seen.add(links)
+        for link in dupes:
             with open(os.getcwd() + '/links.txt', 'ab') as getlinks:
                 parse = urlparse.urlparse(link)
                 if parse.netloc == '':
