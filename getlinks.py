@@ -58,4 +58,4 @@ if __name__ == "__main__":
             PDPThread(binarySemaphore, url, crawlDepth=sys.argv[2]).start()
     except:
         print("\nCheck command format.\nFor example:\n\n" +
-                "fab get_urls:'https://www.google.com'")
+                "fab get_urls:'https://www.google.com 1'")
