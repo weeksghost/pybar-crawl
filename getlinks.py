@@ -33,13 +33,12 @@ class PDPThread(threading.Thread):
                 dupes.append(links)
                 seen.add(links)
         for link in dupes:
-            with open(os.getcwd() + '/links.txt', 'ab') as getlinks:
+            with open(os.getcwd() + '/duplicates.txt', 'ab') as getlinks:
                 parse = urlparse.urlparse(link)
                 if parse.netloc == '':
                     pass
                 else:
                     getlinks.write(link.encode('utf-8') + '\n')
-                    print(link)
 
         self.binarySemaphore.release()
 

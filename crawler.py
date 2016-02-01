@@ -9,7 +9,7 @@ requests.packages.urllib3.disable_warnings()
 class CategoryThread(threading.Thread):
 
     cur_dir = os.getcwd()
-    url_file = cur_dir + '/links.txt'
+    url_file = cur_dir + '/duplicates.txt'
     URL_SCHEMA = 'http://'
 
     def __init__(self, binarySemaphore, url, crawlDepth):
